@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQL Injection Lab - Login Failed</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8d7da;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+        
+        .container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            text-align: center;
+        }
+        
+        h1 {
+            color: #721c24;
+            margin-bottom: 10px;
+        }
+        
+        .failed-banner {
+            background-color: #f8d7da;
+            border: 2px solid #dc3545;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .failed-banner h2 {
+            color: #721c24;
+            margin: 0;
+        }
+        
+        .query-box {
+            background-color: #2d2d2d;
+            color: #f8f8f2;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+            margin: 20px 0;
+            text-align: left;
+            word-wrap: break-word;
+        }
+        
+        .hint-box {
+            background-color: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: left;
+            margin: 20px 0;
+        }
+        
+        .hint-box h3 {
+            color: #856404;
+            margin-top: 0;
+        }
+        
+        .hint-box ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+        
+        .hint-box li {
+            margin: 8px 0;
+            color: #856404;
+        }
+        
+        .hint-box code {
+            background-color: #fff;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .back-btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        
+        .back-btn:hover {
+            background-color: #0056b3;
+        }
+        
+        .info {
+            color: #666;
+            font-size: 14px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>❌ Login Failed</h1>
+        
+        <div class="failed-banner">
+            <h2>Authentication Unsuccessful</h2>
+            <p>Invalid username or password</p>
+        </div>
+        
+        <h3>🔍 Query Executed:</h3>
+        <div class="query-box">
+            {{ query }}
+        </div>
+        
+        <div class="hint-box">
+            <h3>💡 Hints to Try</h3>
+            <ul>
+                <li>Look at the query above - can you see where your input was inserted?</li>
+                <li>What happens if you add a single quote <code>'</code> to your input?</li>
+                <li>Can you use <code>OR</code> to change the query's logic?</li>
+                <li>What condition is always true? (Think: <code>1=1</code>)</li>
+                <li>Try: <code>' OR '1'='1</code> in the password field</li>
+            </ul>
+        </div>
+        
+        <p class="info">Study the query structure and think about how you can manipulate it!</p>
+        
+        <a href="/" class="back-btn">← Try Again</a>
+    </div>
+</body>
+</html>

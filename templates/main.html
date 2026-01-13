@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<!-- Declares this is an HTML5 document -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- Sets character encoding to support all characters -->
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Makes the page responsive on mobile devices -->
+    
+    <title>SQL Injection Lab - Login</title>
+    <!-- Tab title that appears in the browser -->
+    
+    <style>
+        /* CSS styling to make the login form look nice */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        
+        .login-container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 350px;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+            font-weight: bold;
+        }
+        
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+        
+        input[type="text"]:focus,
+        input[type="password"]:focus {
+            outline: none;
+            border-color: #007bff;
+        }
+        
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h1>Login Page</h1>
+        
+        <!-- 
+            FORM ELEMENT - This is where Flask connection happens
+            - action="/login" : This tells the browser where to send the form data
+                               Flask will need a route: @app.route('/login', methods=['POST'])
+            - method="POST"  : Uses POST method (secure way to send data, not in URL)
+        -->
+        <form action="/login" method="POST">
+            
+            <!-- USERNAME INPUT -->
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <!-- 
+                    name="username" : This is the KEY! Flask will access this as:
+                                      request.form.get('username')
+                    id="username"   : Links the label to this input for accessibility
+                -->
+                <input 
+                    type="text" 
+                    id="username" 
+                    name="username" 
+                    placeholder="Enter username" 
+                    required
+                >
+            </div>
+            
+            <!-- PASSWORD INPUT -->
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <!-- 
+                    name="password" : Flask will access this as:
+                                      request.form.get('password')
+                    type="password" : Hides the characters when typing
+                -->
+                <input 
+                    type="password" 
+                    id="password" 
+                    name="password" 
+                    placeholder="Enter password" 
+                    required
+                >
+            </div>
+            
+            <!-- SUBMIT BUTTON -->
+            <!-- 
+                type="submit" : When clicked, sends the form data to Flask
+                               Triggers the action="/login" route
+            -->
+            <button type="submit">Login</button>
+        </form>
+    </div>
+</body>
+</html>
