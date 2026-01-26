@@ -211,6 +211,7 @@ Press Enter and wait. You'll see text scrolling by - this is normal!
 **If you see an error:**
 - Try `pip install flask` instead (without the "3")
 - Or try `python3 -m pip install flask`
+- On Linux, you can also try `sudo apt install python3-flask`
 
 ---
 
