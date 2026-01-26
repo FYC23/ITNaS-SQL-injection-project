@@ -64,48 +64,234 @@ Less common, relies on features enabled on the database server (like DNS or HTTP
 
 ## 🚀 Setup and Running the Project
 
-### Prerequisites
-- Python 3.x installed
-- Basic understanding of SQL and web applications
+### What You'll Need
 
-### Installation Steps
+**No programming experience required!** This guide will walk you through everything step by step.
 
-1. **Navigate to the project directory:**
-   ```bash
-   cd /home/kali/Documents/sqli-lab
-   ```
+You'll need:
+- A computer (Windows, Mac, or Linux)
+- About 15-20 minutes
+- An internet connection (for downloading Python if needed)
 
-2. **Install Flask (the only dependency):**
-   ```bash
-   pip install flask
-   ```
-   or
-   ```bash
-   pip3 install flask
-   ```
+### What is Python?
 
-3. **Verify the database and users:**
-   The `mylab.db` file is included with the project. To verify it has users:
-   ```bash
-   sqlite3 mylab.db
-   ```
-   Then in the SQLite prompt:
-   ```sql
-   SELECT * FROM users;
-   .quit
-   ```
-   You should see the `admin` and `user` accounts listed.
+Python is a programming language. Think of it like Microsoft Word, but instead of writing documents, it runs programs. This project needs Python to work, just like you need Microsoft Word to open .docx files.
 
-4. **Run the server:**
-   ```bash
-   python3 server.py
-   ```
+---
 
-5. **Access the application:**
-   Open your web browser and navigate to:
+### Step 1: Check if Python is Already Installed
+
+Python might already be on your computer. Let's check!
+
+#### Opening the Terminal (Command Line)
+
+The "terminal" or "command line" is a text-based way to give your computer instructions. Here's how to open it:
+
+**On Windows:**
+1. Click the Start menu (Windows icon in bottom-left corner)
+2. Type `cmd` or `command prompt`
+3. Click on "Command Prompt" when it appears
+4. A black window with white text will open
+
+**On Mac:**
+1. Press `Command + Space` to open Spotlight Search
+2. Type `terminal`
+3. Press Enter
+4. A white or black window will open
+
+**On Linux:**
+1. Press `Ctrl + Alt + T`
+2. Or search for "Terminal" in your applications menu
+
+#### Check Your Python Version
+
+Once your terminal is open, type this command and press Enter:
+
+```bash
+python3 --version
+```
+
+**What you should see:**
+- If Python is installed, you'll see something like `Python 3.9.7` or `Python 3.11.2` (the numbers may vary)
+- If you see an error like `command not found` or `not recognized`, Python is not installed
+
+**If Python is NOT installed:**
+1. Go to [https://www.python.org/downloads/](https://www.python.org/downloads/)
+2. Click the big yellow "Download Python" button
+3. Run the downloaded file
+4. **IMPORTANT for Windows users:** Check the box that says "Add Python to PATH" during installation
+5. Follow the installation wizard (click "Next" through the steps)
+6. After installation, close and reopen your terminal, then try `python3 --version` again
+
+---
+
+### Step 2: Download This Project
+
+You need to get the project files onto your computer.
+
+**If you downloaded a ZIP file:**
+1. Find the ZIP file in your Downloads folder
+2. Right-click it and choose "Extract All" (Windows) or double-click it (Mac)
+3. Remember where you extracted it (like your Documents folder)
+
+**If you used Git (advanced):**
+- You already have the files in a folder somewhere on your computer
+
+---
+
+### Step 3: Navigate to the Project Folder
+
+Now we need to tell the terminal where the project files are located.
+
+#### Find Your Project Path
+
+First, find the full path (address) of your project folder:
+
+**On Windows:**
+1. Open File Explorer
+2. Navigate to where you extracted the project
+3. Click on the address bar at the top (where it shows the folder path)
+4. The full path will be highlighted (something like `C:\Users\YourName\Documents\ITNaS-SQL-injection-project`)
+5. Copy this path (Ctrl+C)
+
+**On Mac:**
+1. Open Finder
+2. Navigate to your project folder
+3. Right-click on the folder
+4. Hold down the Option key
+5. Click "Copy [folder name] as Pathname"
+
+#### Navigate in the Terminal
+
+In your terminal, type `cd` (which means "change directory") followed by a space, then paste your path:
+
+**Windows example:**
+```bash
+cd C:\Users\YourName\Documents\ITNaS-SQL-injection-project
+```
+
+**Mac/Linux example:**
+```bash
+cd /Users/YourName/Documents/ITNaS-SQL-injection-project
+```
+
+Press Enter. If successful, you won't see an error message.
+
+**To verify you're in the right place**, type:
+```bash
+dir
+```
+(on Windows) or
+```bash
+ls
+```
+(on Mac/Linux)
+
+You should see files listed including `server.py` and `mylab.db`.
+
+---
+
+### Step 4: Install Flask
+
+Flask is a tool (called a "library") that helps Python create websites. We need to install it.
+
+In your terminal (make sure you're still in the project folder), type:
+
+```bash
+pip3 install flask
+```
+
+Press Enter and wait. You'll see text scrolling by - this is normal!
+
+**What success looks like:**
+- You'll see messages about "Downloading" and "Installing"
+- At the end, you'll see something like "Successfully installed flask"
+- You'll get your command prompt back (the line where you can type)
+
+**If you see an error:**
+- Try `pip install flask` instead (without the "3")
+- Or try `python3 -m pip install flask`
+
+---
+
+### Step 5: Run the Project
+
+Now we're ready to start the web application!
+
+In your terminal, type:
+
+```bash
+python3 server.py
+```
+
+Press Enter.
+
+**What success looks like:**
+- You'll see several lines of text appear
+- One line will say something like `Running on http://127.0.0.1:5000` or `Running on http://localhost:5000`
+- The cursor will NOT come back - this is normal! The program is running.
+- **Do NOT close this terminal window** - the program needs to stay running
+
+**If you see an error:**
+- Try `python server.py` instead (without the "3")
+- Make sure you're in the correct folder (go back to Step 3)
+- Make sure Flask installed correctly (go back to Step 4)
+
+---
+
+### Step 6: Open the Application in Your Web Browser
+
+Now let's see the application!
+
+1. Open your web browser (Chrome, Firefox, Safari, Edge - any browser works)
+2. In the address bar at the top (where you normally type google.com), type:
    ```
    http://localhost:5000
    ```
+3. Press Enter
+
+**What you should see:**
+- A login page with fields for username and password
+- This is the vulnerable application you'll be testing!
+
+**Troubleshooting:**
+- If the page doesn't load, make sure the terminal window from Step 5 is still open and running
+- Try `http://127.0.0.1:5000` instead
+- Make sure you typed the address exactly as shown (including the `http://` part)
+
+---
+
+### Step 7: When You're Done
+
+To stop the application:
+
+1. Go back to the terminal window where the program is running
+2. Press `Ctrl + C` (hold Control and press C)
+3. The program will stop and you'll get your command prompt back
+4. You can now close the terminal window
+
+---
+
+### Quick Reference: Starting the Application Again
+
+After the first time, starting the application is easier:
+
+1. Open terminal
+2. Navigate to project folder: `cd [your-project-path]`
+3. Run the server: `python3 server.py`
+4. Open browser to: `http://localhost:5000`
+
+---
+
+### Need Help?
+
+**Common Issues:**
+
+- **"Python not found"** - Go back to Step 1 and install Python
+- **"Flask not found"** - Go back to Step 4 and install Flask
+- **"No such file or directory"** - You're not in the right folder, go back to Step 3
+- **"Address already in use"** - The program is already running in another terminal window, or another program is using port 5000. Close other terminals or restart your computer.
+- **Page won't load in browser** - Make sure the terminal is still running the program (you should see the text from Step 5)
 
 ---
 
