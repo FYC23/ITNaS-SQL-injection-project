@@ -64,7 +64,20 @@ Less common, relies on features enabled on the database server (like DNS or HTTP
 
 ## 🚀 Setup and Running the Project
 
-### What You'll Need
+### ⚡ Quick Start: Using the Raspberry Pi Demo
+
+**If you're using the pre-configured Raspberry Pi demo, you can skip all the setup steps below!**
+
+Simply:
+1. Open Firefox on the Raspberry Pi
+2. Click the bookmarked **"SQL Injection Lab - Login"** page
+3. Or navigate to `0.0.0.0:5000` in the address bar
+
+The lab is already running and ready to use. Jump straight to the [💡 Hint section](#-hint-how-to-perform-sql-injection) to start learning!
+
+---
+
+### What You'll Need (For Manual Setup)
 
 **No programming experience required!** This guide will walk you through everything step by step.
 
