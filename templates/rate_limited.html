@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rate Limit Exceeded</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            text-align: center;
+            border-top: 5px solid #ffa502;
+        }
+
+        h1 {
+            color: #e17055;
+            margin-bottom: 20px;
+            font-size: 28px;
+        }
+
+        .icon {
+            font-size: 64px;
+            margin-bottom: 20px;
+        }
+
+        .message {
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        .info-box {
+            background-color: #fff3cd;
+            border-left: 4px solid #ffa502;
+            padding: 15px;
+            margin: 20px 0;
+            text-align: left;
+            border-radius: 3px;
+        }
+
+        .info-box strong {
+            color: #e17055;
+        }
+
+        .reset-time {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 18px;
+            color: #2d3436;
+        }
+
+        .educational-note {
+            background-color: #e3f2fd;
+            border-left: 4px solid #2196f3;
+            padding: 15px;
+            margin: 20px 0;
+            text-align: left;
+            border-radius: 3px;
+            font-size: 14px;
+        }
+
+        .educational-note h3 {
+            margin-top: 0;
+            color: #1976d2;
+            font-size: 16px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+
+        .btn-disabled {
+            background-color: #6c757d;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="icon">⏱️</div>
+        <h1>Too Many Login Attempts</h1>
+
+        <div class="message">
+            <p>You have exceeded the maximum number of login attempts allowed.</p>
+        </div>
+
+        <div class="info-box">
+            <p><strong>Rate Limit:</strong> {{ max_attempts }} attempts per {{ window_minutes }} minutes</p>
+            <p><strong>Your IP:</strong> Rate limited</p>
+        </div>
+
+        <div class="reset-time">
+            <p style="margin: 0; font-size: 14px; color: #666;">Rate limit resets at:</p>
+            <p style="margin: 5px 0 0 0;"><strong>{{ reset_time.strftime('%I:%M:%S %p') }}</strong></p>
+        </div>
+
+        <div class="educational-note">
+            <h3>🎓 Why Rate Limiting?</h3>
+            <p><strong>Rate limiting</strong> is a security mechanism that restricts the number of requests a user can make within a specific time window. It protects against:</p>
+            <ul style="margin: 10px 0; padding-left: 20px;">
+                <li><strong>Brute Force Attacks:</strong> Automated attempts to guess passwords by trying many combinations</li>
+                <li><strong>Credential Stuffing:</strong> Using stolen username/password pairs from other breaches</li>
+                <li><strong>Resource Exhaustion:</strong> Preventing server overload from excessive requests</li>
+            </ul>
+            <p>In production systems, rate limiting is often combined with:</p>
+            <ul style="margin: 10px 0; padding-left: 20px;">
+                <li>CAPTCHA challenges after failed attempts</li>
+                <li>Account lockouts for repeated failures</li>
+                <li>IP-based blocking for suspicious activity</li>
+                <li>Progressive delays (exponential backoff)</li>
+            </ul>
+        </div>
+
+        <a href="/" class="btn btn-disabled">Return to Login (Wait for Reset)</a>
+
+        <p style="margin-top: 20px; font-size: 12px; color: #999;">
+            This is an educational demonstration. In a real system, you might also receive an email notification.
+        </p>
+    </div>
+</body>
+</html>

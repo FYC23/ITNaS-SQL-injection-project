@@ -79,10 +79,41 @@
         button:hover {
             background-color: #0056b3;
         }
+
+        .mode-indicator {
+            text-align: center;
+            margin-bottom: 20px;
+            padding: 10px;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .mode-indicator.secure {
+            background-color: #d4edda;
+            color: #155724;
+            border: 2px solid #28a745;
+        }
+
+        .mode-indicator.vulnerable {
+            background-color: #fff3cd;
+            color: #856404;
+            border: 2px solid #ffc107;
+        }
     </style>
 </head>
 <body>
     <div class="login-container">
+        {% if secure_mode %}
+        <div class="mode-indicator secure">
+            🔒 Secure Mode Active - SQL Injection Protection Enabled
+        </div>
+        {% else %}
+        <div class="mode-indicator vulnerable">
+            ⚠️ Vulnerable Mode (Educational) - SQL Injection Allowed
+        </div>
+        {% endif %}
+
         <h1>Login Page</h1>
         
         <!-- 

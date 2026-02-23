@@ -149,6 +149,47 @@
             margin-top: 0;
             border-bottom: 2px solid #ffc107;
         }
+
+        .detection-notice {
+            background-color: #fff3cd;
+            border: 3px solid #ffa502;
+            border-radius: 8px;
+            padding: 25px;
+            margin: 30px 0;
+        }
+
+        .detection-notice h3 {
+            color: #e17055;
+            margin-top: 0;
+            border-bottom: 2px solid #ffa502;
+        }
+
+        .detection-notice ul {
+            margin: 15px 0;
+            padding-left: 25px;
+        }
+
+        .detection-notice li {
+            margin: 8px 0;
+            color: #856404;
+        }
+
+        .detection-notice .pattern-code {
+            background-color: #2d2d2d;
+            color: #00ff00;
+            padding: 3px 8px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+        }
+
+        .detection-notice .secure-mode-note {
+            background-color: #e3f2fd;
+            border-left: 4px solid #2196f3;
+            padding: 15px;
+            margin-top: 15px;
+            border-radius: 3px;
+        }
     </style>
 </head>
 <body>
@@ -159,11 +200,30 @@
             <h2>✅ SQL Injection Attack Worked!</h2>
             <p>You successfully bypassed the authentication</p>
         </div>
-        
+
+        {% if attack_detected %}
+        <div class="detection-notice">
+            <h3>⚠️ Security Detection Notice</h3>
+            <p><strong>This login succeeded, but our security system detected SQL injection patterns in your input:</strong></p>
+            <ul>
+                {% for pattern in patterns %}
+                <li><span class="pattern-code">{{ pattern }}</span></li>
+                {% endfor %}
+            </ul>
+            <p><strong>Attack Category:</strong> {{ category.replace('_', ' ').title() }}</p>
+            <div class="secure-mode-note">
+                <p><strong>🛡️ In Secure Mode:</strong> This attack would have been blocked before reaching the database. The system is currently in <strong>Vulnerable Mode</strong> for educational purposes, which allows attacks to succeed so you can see how they work.</p>
+                <p>To see how protection works, ask your instructor to enable Secure Mode and try the same attack again.</p>
+            </div>
+        </div>
+        {% endif %}
+
+        {% if query %}
         <h3>🔍 The Query That Was Executed</h3>
         <div class="query-box">
             {{ query }}
         </div>
+        {% endif %}
         
         <div class="extracted-data">
             <h3>🚨 Data Returned by Your Query</h3>

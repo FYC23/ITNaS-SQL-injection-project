@@ -1,3 +1,693 @@
+This file is a merged representation of the entire codebase, combined into a single document by Repomix.
+
+<file_summary>
+This section contains a summary of this file.
+
+<purpose>
+This file contains a packed representation of the entire repository's contents.
+It is designed to be easily consumable by AI systems for analysis, code review,
+or other automated processes.
+</purpose>
+
+<file_format>
+The content is organized as follows:
+1. This summary section
+2. Repository information
+3. Directory structure
+4. Repository files (if enabled)
+5. Multiple file entries, each consisting of:
+  - File path as an attribute
+  - Full contents of the file
+</file_format>
+
+<usage_guidelines>
+- This file should be treated as read-only. Any changes should be made to the
+  original repository files, not this packed version.
+- When processing this file, use the file path to distinguish
+  between different files in the repository.
+- Be aware that this file may contain sensitive information. Handle it with
+  the same level of security as you would the original repository.
+</usage_guidelines>
+
+<notes>
+- Some files may have been excluded based on .gitignore rules and Repomix's configuration
+- Binary files are not included in this packed representation. Please refer to the Repository Structure section for a complete list of file paths, including binary files
+- Files matching patterns in .gitignore are excluded
+- Files matching default ignore patterns are excluded
+- Files are sorted by Git change count (files with more changes are at the bottom)
+</notes>
+
+</file_summary>
+
+<directory_structure>
+templates/
+  failed.html
+  main.html
+  success.html
+.gitignore
+mylab.db
+README.md
+server.py
+</directory_structure>
+
+<files>
+This section contains the contents of the repository's files.
+
+<file path="templates/failed.html">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQL Injection Lab - Login Failed</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8d7da;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+        
+        .container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            text-align: center;
+        }
+        
+        h1 {
+            color: #721c24;
+            margin-bottom: 10px;
+        }
+        
+        .failed-banner {
+            background-color: #f8d7da;
+            border: 2px solid #dc3545;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .failed-banner h2 {
+            color: #721c24;
+            margin: 0;
+        }
+        
+        .query-box {
+            background-color: #2d2d2d;
+            color: #f8f8f2;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+            margin: 20px 0;
+            text-align: left;
+            word-wrap: break-word;
+        }
+        
+        .hint-box {
+            background-color: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: left;
+            margin: 20px 0;
+        }
+        
+        .hint-box h3 {
+            color: #856404;
+            margin-top: 0;
+        }
+        
+        .hint-box ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+        
+        .hint-box li {
+            margin: 8px 0;
+            color: #856404;
+        }
+        
+        .hint-box code {
+            background-color: #fff;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .back-btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        
+        .back-btn:hover {
+            background-color: #0056b3;
+        }
+        
+        .info {
+            color: #666;
+            font-size: 14px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>❌ Login Failed</h1>
+        
+        <div class="failed-banner">
+            <h2>Authentication Unsuccessful</h2>
+            <p>Invalid username or password</p>
+        </div>
+        
+        <h3>🔍 Query Executed:</h3>
+        <div class="query-box">
+            {{ query }}
+        </div>
+        
+        <div class="hint-box">
+            <h3>💡 Hints to Try</h3>
+            <ul>
+                <li>Look at the query above - can you see where your input was inserted?</li>
+                <li>What happens if you add a single quote <code>'</code> to your input?</li>
+                <li>Can you use <code>OR</code> to change the query's logic?</li>
+                <li>What condition is always true? (Think: <code>1=1</code>)</li>
+                <li>Try: <code>' OR '1'='1</code> in the password field</li>
+            </ul>
+        </div>
+        
+        <p class="info">Study the query structure and think about how you can manipulate it!</p>
+        
+        <a href="/" class="back-btn">← Try Again</a>
+    </div>
+</body>
+</html>
+</file>
+
+<file path="templates/main.html">
+<!DOCTYPE html>
+<!-- Declares this is an HTML5 document -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- Sets character encoding to support all characters -->
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Makes the page responsive on mobile devices -->
+    
+    <title>SQL Injection Lab - Login</title>
+    <!-- Tab title that appears in the browser -->
+    
+    <style>
+        /* CSS styling to make the login form look nice */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        
+        .login-container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 350px;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+            font-weight: bold;
+        }
+        
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+        
+        input[type="text"]:focus,
+        input[type="password"]:focus {
+            outline: none;
+            border-color: #007bff;
+        }
+        
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h1>Login Page</h1>
+        
+        <!-- 
+            FORM ELEMENT - This is where Flask connection happens
+            - action="/login" : This tells the browser where to send the form data
+                               Flask will need a route: @app.route('/login', methods=['POST'])
+            - method="POST"  : Uses POST method (secure way to send data, not in URL)
+        -->
+        <form action="/login" method="POST">
+            
+            <!-- USERNAME INPUT -->
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <!-- 
+                    name="username" : This is the KEY! Flask will access this as:
+                                      request.form.get('username')
+                    id="username"   : Links the label to this input for accessibility
+                -->
+                <input 
+                    type="text" 
+                    id="username" 
+                    name="username" 
+                    placeholder="Enter username" 
+                    required
+                >
+            </div>
+            
+            <!-- PASSWORD INPUT -->
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <!-- 
+                    name="password" : Flask will access this as:
+                                      request.form.get('password')
+                    type="password" : Hides the characters when typing
+                -->
+                <input 
+                    type="password" 
+                    id="password" 
+                    name="password" 
+                    placeholder="Enter password" 
+                    required
+                >
+            </div>
+            
+            <!-- SUBMIT BUTTON -->
+            <!-- 
+                type="submit" : When clicked, sends the form data to Flask
+                               Triggers the action="/login" route
+            -->
+            <button type="submit">Login</button>
+        </form>
+    </div>
+</body>
+</html>
+</file>
+
+<file path="templates/success.html">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQL Injection Lab - Login Successful</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #d4edda;
+            margin: 0;
+            padding: 40px;
+        }
+        
+        .container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            color: #155724;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        
+        .success-banner {
+            background-color: #d4edda;
+            border: 2px solid #28a745;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .success-banner h2 {
+            color: #155724;
+            margin: 0;
+        }
+        
+        .query-box {
+            background-color: #2d2d2d;
+            color: #f8f8f2;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+        
+        .query-box pre {
+            margin: 0;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        
+        h3 {
+            color: #333;
+            border-bottom: 2px solid #28a745;
+            padding-bottom: 10px;
+            margin-top: 30px;
+        }
+        
+        .explanation {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #28a745;
+            margin: 20px 0;
+        }
+        
+        .breakdown {
+            margin: 15px 0;
+        }
+        
+        .breakdown code {
+            background-color: #e9ecef;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .payloads {
+            background-color: #fff3cd;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #ffc107;
+        }
+        
+        .payload-item {
+            background-color: white;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+        
+        .payload-item code {
+            background-color: #2d2d2d;
+            color: #f8f8f2;
+            padding: 5px 10px;
+            border-radius: 4px;
+            display: block;
+            margin: 10px 0;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .payload-item p {
+            margin: 5px 0;
+            color: #666;
+        }
+        
+        .back-btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        
+        .back-btn:hover {
+            background-color: #0056b3;
+        }
+        
+        .warning {
+            background-color: #f8d7da;
+            border-left: 4px solid #dc3545;
+            padding: 15px;
+            margin-top: 30px;
+            border-radius: 8px;
+            color: #721c24;
+        }
+        
+        .extracted-data {
+            background-color: #fff3cd;
+            border: 2px solid #ffc107;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .extracted-data h3 {
+            color: #856404;
+            margin-top: 0;
+            border-bottom: 2px solid #ffc107;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎉 Login Successful!</h1>
+        
+        <div class="success-banner">
+            <h2>✅ SQL Injection Attack Worked!</h2>
+            <p>You successfully bypassed the authentication</p>
+        </div>
+        
+        <h3>🔍 The Query That Was Executed</h3>
+        <div class="query-box">
+            {{ query }}
+        </div>
+        
+        <div class="extracted-data">
+            <h3>🚨 Data Returned by Your Query</h3>
+            <p>Your SQL injection returned <strong>{{ results|length }} row(s)</strong> from the database:</p>
+            
+            <div class="query-box">
+                <pre>{{ results }}</pre>
+            </div>
+            
+            {% if results|length > 1 %}
+            <p style="margin-top: 15px; color: #856404;">
+                <strong>💡 Data Exfiltration Alert!</strong> You extracted {{ results|length }} rows! 
+                This shows how SQL injection can be used to dump entire databases. 
+                In a real attack, all this sensitive information would be stolen.
+            </p>
+            {% else %}
+            <p style="margin-top: 15px; color: #856404;">
+                <strong>💡 Success!</strong> The query returned user data, allowing authentication bypass.
+            </p>
+            {% endif %}
+        </div>
+        
+        <h3>📖 How SQL Injection Works</h3>
+        <div class="explanation">
+            <p>SQL injection works because the application uses <strong>string concatenation</strong> to build SQL queries, rather than parameterized queries. This allows attackers to manipulate the SQL logic.</p>
+            
+            <div class="breakdown">
+                <p><strong>The Vulnerability:</strong></p>
+                <code>query = f"SELECT * FROM users WHERE username='{username}' AND password='{password}'"</code>
+                <p>User input is directly inserted into the query string without sanitization.</p>
+            </div>
+            
+            <div class="breakdown">
+                <p><strong>Example Attack: <code>' OR '1'='1</code></strong></p>
+                <p>If an attacker enters <code>' OR '1'='1</code> as the password, the query becomes:</p>
+                <code>SELECT * FROM users WHERE username='admin' AND password='' OR '1'='1'</code>
+                <p>The single quote <code>'</code> closes the password string early, then <code>OR '1'='1'</code> adds a condition that's always TRUE.</p>
+            </div>
+            
+            <div class="breakdown">
+                <p><strong>Why It Succeeds:</strong></p>
+                <p>SQL evaluates: <code>(username='admin' AND password='') OR ('1'='1')</code></p>
+                <p>Since <code>'1'='1'</code> is always true, the entire WHERE clause returns true, giving access to user accounts!</p>
+            </div>
+            
+            <div class="breakdown">
+                <p><strong>What You Used:</strong></p>
+                <p>Look at your query above to see exactly how you manipulated the SQL logic!</p>
+            </div>
+        </div>
+        
+        <h3>🧪 Other Payloads to Try</h3>
+        <div class="payloads">
+            <p>Go back and try these other SQL injection techniques:</p>
+            
+            <div class="payload-item">
+                <strong>Username field bypass:</strong>
+                <code>admin'--</code>
+                <p>The <code>--</code> comments out everything after (including password check). Enter anything as password.</p>
+            </div>
+            
+            <div class="payload-item">
+                <strong>Always true (numeric):</strong>
+                <code>' OR 1=1--</code>
+                <p>Uses numeric comparison instead of string. Works in both username or password field.</p>
+            </div>
+            
+            <div class="payload-item">
+                <strong>Close and comment:</strong>
+                <code>admin' OR '1'='1'--</code>
+                <p>Combines username injection with always-true condition.</p>
+            </div>
+            
+            <div class="payload-item">
+                <strong>OR with different syntax:</strong>
+                <code>' OR 'a'='a</code>
+                <p>Same concept - any comparison that's always true works!</p>
+            </div>
+            
+            <div class="payload-item">
+                <strong>UNION attack (advanced):</strong>
+                <code>' UNION SELECT 4, 'hacked', 'password'--</code>
+                <p>Returns a fake user row. Shows how attackers can extract data.</p>
+            </div>
+            
+            <div class="payload-item">
+                <strong>Extract all passwords (data exfiltration):</strong>
+                <code>' UNION SELECT id, username, password FROM users--</code>
+                <p>Dumps ALL usernames and passwords from the database! This shows how SQL injection can lead to massive data breaches.</p>
+            </div>
+        </div>
+        
+        <div class="warning">
+            <strong>⚠️ Remember:</strong> SQL injection is illegal when performed on systems you don't own or have explicit permission to test. This lab is for educational purposes only!
+        </div>
+        
+        <a href="/" class="back-btn">← Try Again</a>
+    </div>
+</body>
+</html>
+</file>
+
+<file path=".gitignore">
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+
+# Virtual Environment
+venv/
+env/
+ENV/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# SQLite (uncomment the line below if you DON'T want to include the database)
+# *.db
+
+# Flask
+instance/
+.webassets-cache
+
+# Environment variables
+.env
+.flaskenv
+</file>
+
+<file path="server.py">
+from flask import Flask, request, render_template
+import sqlite3
+
+app = Flask(__name__)
+
+@app.route('/')
+def home():
+    return render_template('main.html')
+
+@app.route('/login', methods=['POST'])
+def login():
+    username = request.form.get('username')
+    password = request.form.get('password')
+
+    conn = sqlite3.connect('mylab.db')
+    cursor = conn.cursor()
+
+    # secure, parameterized query:
+    # query = "SELECT * FROM users WHERE username = ? AND password = ?"
+    # cursor.execute(query, (username, password))
+
+    # insecure, non-parameterized query:
+    query = f"SELECT * FROM users WHERE username = '{username}' AND password = '{password}'"
+    cursor.execute(query)
+    
+    # Fetch ALL results to show UNION attacks that extract multiple rows
+    results = cursor.fetchall()
+    conn.close()
+
+    if results:
+        return render_template('success.html', query=query, results=results)
+    else:
+        return render_template('failed.html', query=query)
+
+if __name__ == '__main__':
+    app.run(debug=True, host='0.0.0.0', port=5000)
+</file>
+
+<file path="README.md">
 # SQL Injection Lab
 
 ## 📌 What Is This Project?
@@ -59,125 +749,6 @@ Used when the application doesn't display database errors or data, but behaves d
 Less common, relies on features enabled on the database server (like DNS or HTTP requests) to transfer data to the attacker.
 
 **This lab focuses on In-Band (Classic) SQL Injection**, which is the most straightforward to understand and demonstrate for educational purposes.
-
----
-
-## 🛡️ Security Features (New!)
-
-This lab now includes educational security features that demonstrate both vulnerable and secure implementations. The system can operate in two modes:
-
-### Dual-Mode System
-
-**Vulnerable Mode (Default):**
-- Allows SQL injection attacks to succeed for educational demonstration
-- Detects and logs all attack attempts
-- Shows executed queries and detection results
-- Perfect for learning how attacks work
-
-**Secure Mode:**
-- Blocks SQL injection attacks using parameterized queries
-- Displays educational feedback about what was detected
-- Shows side-by-side comparison of vulnerable vs. secure code
-- Demonstrates real-world protection mechanisms
-
-### Attack Detection
-
-The system automatically detects common SQL injection patterns:
-- **Boolean-based injection**: `' OR '1'='1`, `' OR 1=1`
-- **Comment injection**: `--`, `#`, `/*`, `*/`
-- **UNION attacks**: `UNION SELECT`, `UNION ALL SELECT`
-- **Stacked queries**: `; DROP`, `; DELETE`, `; UPDATE`
-- **Time-based blind**: `SLEEP(`, `WAITFOR`, `BENCHMARK`
-- **Quote manipulation**: Multiple quotes, quote pairs
-
-All attempts are logged with:
-- Timestamp and IP address
-- Detected patterns and attack category
-- Confidence level (low/medium/high)
-- Action taken (logged or blocked)
-
-### Rate Limiting
-
-Protects against brute force attacks:
-- Maximum 5 login attempts per IP address
-- 5-minute sliding window
-- Educational explanation of rate limiting concepts
-- Automatic reset after time window expires
-
-### How to Toggle Secure Mode
-
-1. Open `config.py` in a text editor
-2. Change `SECURE_MODE = False` to `SECURE_MODE = True`
-3. Save the file
-4. Restart the server (`Ctrl+C` then `python3 server.py`)
-
-The login page will show a mode indicator:
-- 🔒 **Secure Mode Active** - SQL Injection Protection Enabled
-- ⚠️ **Vulnerable Mode (Educational)** - SQL Injection Allowed
-
-### Understanding the Logs
-
-Logs are stored in the `logs/` directory:
-
-**injection_attempts.jsonl** - All detected SQL injection attempts:
-```json
-{
-  "timestamp": "2026-02-23T14:30:45.123456",
-  "ip_address": "192.168.1.100",
-  "username_input": "admin",
-  "password_input": "[REDACTED]",
-  "detected_patterns": ["' OR '1'='1"],
-  "category": "boolean_based",
-  "confidence": "high",
-  "action_taken": "blocked"
-}
-```
-
-**access.log** - Legitimate login attempts:
-```json
-{
-  "timestamp": "2026-02-23T14:35:12.789012",
-  "ip_address": "192.168.1.100",
-  "username": "admin",
-  "success": true
-}
-```
-
-Logs rotate automatically at 10MB to prevent disk space issues.
-
-### Detection Patterns
-
-The system uses pattern-based detection with compiled regex for performance:
-
-| Category | Example Patterns | Confidence |
-|----------|-----------------|------------|
-| Boolean-based | `' OR '1'='1`, `' OR 1=1` | High |
-| Comment injection | `--`, `#`, `/*` | Medium |
-| UNION attacks | `UNION SELECT` | High |
-| Stacked queries | `; DROP TABLE` | High |
-| Time-based blind | `SLEEP(5)` | High |
-| Quote manipulation | `'''`, `"""` | Medium |
-
-False positive handling ensures legitimate inputs like "O'Brien" or "user@example.com" are not flagged.
-
-### For Instructors
-
-See `docs/INSTRUCTOR_GUIDE.md` for:
-- Classroom setup instructions
-- How to demonstrate vulnerable vs. secure modes
-- Interpreting logs for class discussion
-- Common student questions and answers
-- Troubleshooting guide
-- Customizing detection patterns
-
-### For Students
-
-See `docs/STUDENT_WORKSHEET.md` for hands-on exercises:
-1. Try 5 different SQL injection payloads in vulnerable mode
-2. Observe what gets detected in the logs
-3. Enable secure mode and retry the same payloads
-4. Compare the vulnerable vs. secure code
-5. Write your own detection pattern and test it
 
 ---
 
@@ -707,3 +1278,6 @@ This is an educational project. If you find issues or have suggestions for impro
 ## 📄 License
 
 This project is intended for educational purposes only. Use responsibly and ethically.
+</file>
+
+</files>
