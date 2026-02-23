@@ -1,14 +1,14 @@
 # SQL Injection Lab
 
-## 📌 What Is This Project?
+## What Is This Project?
 
 This is an educational lab environment designed to teach students about **SQL injection vulnerabilities** in web applications. The project contains an intentionally vulnerable login system that allows students to practice identifying and exploiting SQL injection flaws in a safe, controlled environment.
 
-**⚠️ WARNING:** This application is intentionally insecure. **NEVER** deploy this to a production environment or expose it to the internet.
+**WARNING:** This application is intentionally insecure. **NEVER** deploy this to a production environment or expose it to the internet.
 
 ---
 
-## 🔓 What Is SQL Injection?
+## What Is SQL Injection?
 
 **SQL Injection (SQLi)** is a web security vulnerability that allows an attacker to interfere with the queries that an application makes to its database. It occurs when user-supplied input is directly concatenated into SQL queries without proper sanitization or parameterization.
 
@@ -62,7 +62,7 @@ Less common, relies on features enabled on the database server (like DNS or HTTP
 
 ---
 
-## 🛡️ Security Features (New!)
+## Security Features (New!)
 
 This lab now includes educational security features that demonstrate both vulnerable and secure implementations. The system can operate in two modes:
 
@@ -112,8 +112,8 @@ Protects against brute force attacks:
 4. Restart the server (`Ctrl+C` then `python3 server.py`)
 
 The login page will show a mode indicator:
-- 🔒 **Secure Mode Active** - SQL Injection Protection Enabled
-- ⚠️ **Vulnerable Mode (Educational)** - SQL Injection Allowed
+- **Secure Mode Active** - SQL Injection Protection Enabled
+- **Vulnerable Mode (Educational)** - SQL Injection Allowed
 
 ### Understanding the Logs
 
@@ -181,9 +181,9 @@ See `docs/STUDENT_WORKSHEET.md` for hands-on exercises:
 
 ---
 
-## 🚀 Setup and Running the Project
+## Setup and Running the Project
 
-### ⚡ Quick Start: Using the Raspberry Pi Demo
+### Quick Start: Using the Raspberry Pi Demo
 
 **If you're using the pre-configured Raspberry Pi demo, you can skip all the setup steps below!**
 
@@ -192,7 +192,7 @@ Simply:
 2. Click the bookmarked **"SQL Injection Lab - Login"** page
 3. Or navigate to `0.0.0.0:5000` in the address bar
 
-The lab is already running and ready to use. Jump straight to the [💡 Hint section](#-hint-how-to-perform-sql-injection) to start learning!
+The lab is already running and ready to use. Jump straight to the [Hint section](#hint-how-to-perform-sql-injection) to start learning!
 
 ---
 
@@ -428,7 +428,7 @@ After the first time, starting the application is easier:
 
 ---
 
-## 💡 Hint: How to Perform SQL Injection
+## Hint: How to Perform SQL Injection
 
 Think about how SQL queries work. The login form checks if a username AND password match. What if you could make the query always return true, regardless of the password?
 
@@ -447,7 +447,7 @@ Try entering special characters in the username or password field and observe wh
 
 ---
 
-## 🎯 Solution: Exploiting the SQL Injection
+## Solution: Exploiting the SQL Injection
 
 ### The Attack
 
@@ -555,13 +555,13 @@ With parameterized queries, the database treats user input as **data**, not as p
 
 ---
 
-## 🛡️ How to Prevent SQL Injection
+## How to Prevent SQL Injection
 
 Based on guidance from [OWASP SQL Injection Prevention Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html), here are the primary defenses against SQL injection:
 
 ### Primary Defenses
 
-1. **Use Parameterized Queries (Prepared Statements)** ⭐ **MOST IMPORTANT**
+1. **Use Parameterized Queries (Prepared Statements)** **MOST IMPORTANT**
    - Always use `?` placeholders or named parameters with tuple/dictionary parameters
    - This separates SQL logic from data, ensuring user input is treated as data only
    - Available in virtually all database libraries and ORMs
@@ -610,7 +610,7 @@ Based on guidance from [OWASP SQL Injection Prevention Cheat Sheet](https://chea
 
 ---
 
-## 🌍 Real-World Impact
+## Real-World Impact
 
 SQL injection is not just a theoretical vulnerability. According to OWASP, it has been used in many high-profile data breaches:
 
@@ -637,7 +637,7 @@ This lab demonstrates why proper input handling and parameterized queries are ab
 
 ---
 
-## 📚 Learning Objectives
+## Learning Objectives
 
 By completing this lab, students should understand:
 - How SQL injection vulnerabilities occur
@@ -648,7 +648,7 @@ By completing this lab, students should understand:
 
 ---
 
-## 📖 References & Further Reading
+## References & Further Reading
 
 This lab's content is based on industry-standard security guidance from the following authoritative sources:
 
@@ -700,10 +700,10 @@ This lab's content is based on industry-standard security guidance from the foll
 
 ---
 
-## 🤝 Contributing
+## Contributing
 
 This is an educational project. If you find issues or have suggestions for improvement, please feel free to contribute or provide feedback.
 
-## 📄 License
+## License
 
 This project is intended for educational purposes only. Use responsibly and ethically.
