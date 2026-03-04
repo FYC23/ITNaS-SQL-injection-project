@@ -619,6 +619,7 @@ SQL injection is not just a theoretical vulnerability. According to OWASP, it ha
 - **Website Defacement**: Attackers modify website content or inject malicious scripts
 - **Data Destruction**: Entire databases deleted or corrupted
 - **Privilege Escalation**: Normal users elevated to administrator status
+- **Example (Oct 2012, universities — `#ProjectWestWind`)**: GhostShell (a hacker collective) conducted a widely reported SQL injection campaign that breached **53 universities** worldwide. Named targets reported in public writeups include **Harvard**, **Stanford**, **Cornell**, **Princeton**, **Johns Hopkins**, and the **University of Zurich** (the group also published a full list of targets publicly at the time). The attackers reportedly exploited SQL injection flaws in university web applications and used automated SQLi tooling (commonly cited examples include **Havij** and **sqlmap**) to extract data from back-end databases. The leaked dataset was widely reported to include roughly **36,000** records such as **email addresses**, **names**, **usernames**, **passwords**, **addresses**, and **phone numbers**, and in some cases additional sensitive fields like **dates of birth** and **payroll-related information**. The group framed the attack as a protest against rising tuition and what they described as a deteriorating quality of education.
 
 **Why It's Still Common:**
 Despite being well-understood for decades, SQL injection remains prevalent because:

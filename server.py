@@ -169,7 +169,7 @@ def login():
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='SQL Injection Lab')
-    parser.add_argument('--port', type=int, default=8000, help='Port to run the server on')
+    parser.add_argument('--port', type=int, default=5000, help='Port to run the server on')
     parser.add_argument('--secure-mode', action='store_true', help='Enable secure mode')
     args = parser.parse_args()
 
